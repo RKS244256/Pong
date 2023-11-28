@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://djbrmltt43krm"]
+[gd_scene load_steps=4 format=3 uid="uid://ybwjuxcvghyw"]
 
-[ext_resource type="Script" path="res://player_2.gd" id="1_6ct6h"]
-[ext_resource type="Texture2D" uid="uid://csdoufocyw4qf" path="res://Assets/Paddle.png" id="1_y5q25"]
+[ext_resource type="Script" path="res://player_2.gd" id="1_1ad1k"]
+[ext_resource type="Texture2D" uid="uid://csdoufocyw4qf" path="res://Assets/Paddle.png" id="2_ib4wc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ml37"]
 size = Vector2(28, 119)
 
-[node name="Player" type="StaticBody2D"]
-script = ExtResource("1_6ct6h")
+[node name="Node2D" type="StaticBody2D"]
+script = ExtResource("1_1ad1k")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_y5q25")
+texture = ExtResource("2_ib4wc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)
