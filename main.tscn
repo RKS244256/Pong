@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq58yatvog7v2"]
+[gd_scene load_steps=8 format=3 uid="uid://bq58yatvog7v2"]
 
 [ext_resource type="PackedScene" uid="uid://fqaf7nwismjx" path="res://player_1.tscn" id="1_jqu8g"]
-[ext_resource type="PackedScene" uid="uid://djbrmltt43krm" path="res://player_2.tscn" id="2_1vdns"]
-[ext_resource type="PackedScene" uid="uid://lgxmvr157k2a" path="res://ball.tscn" id="3_kr8xq"]
+[ext_resource type="Script" path="res://main.gd" id="1_p7361"]
+[ext_resource type="PackedScene" uid="uid://ybwjuxcvghyw" path="res://player_2.tscn" id="2_frrk2"]
+[ext_resource type="PackedScene" uid="uid://cqbe26fhnyihx" path="res://ball.tscn" id="3_b2xsx"]
+[ext_resource type="PackedScene" uid="uid://db5ge4cj2hw8e" path="res://edge.tscn" id="5_5umgx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfh70"]
 size = Vector2(1169, 20)
@@ -11,6 +13,7 @@ size = Vector2(1169, 20)
 size = Vector2(1170.5, 20)
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_p7361")
 
 [node name="Top" type="StaticBody2D" parent="."]
 
@@ -24,11 +27,35 @@ shape = SubResource("RectangleShape2D_rfh70")
 position = Vector2(582.75, 663)
 shape = SubResource("RectangleShape2D_cevjs")
 
-[node name="Player" parent="." instance=ExtResource("1_jqu8g")]
-position = Vector2(79, 341)
+[node name="Left" parent="." instance=ExtResource("5_5umgx")]
 
-[node name="Player2" parent="." instance=ExtResource("2_1vdns")]
-position = Vector2(943, 338)
+[node name="Right" parent="." instance=ExtResource("5_5umgx")]
+position = Vector2(1162, 0)
 
-[node name="ball" parent="." instance=ExtResource("3_kr8xq")]
-position = Vector2(515, 353)
+[node name="Player_2" parent="." instance=ExtResource("2_frrk2")]
+position = Vector2(1069, 335)
+
+[node name="Player_1" parent="." instance=ExtResource("1_jqu8g")]
+position = Vector2(108, 335)
+
+[node name="Ball" parent="." instance=ExtResource("3_b2xsx")]
+position = Vector2(581, 327)
+
+[node name="p1_score" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 280.0
+offset_right = 492.0
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="p2_score" type="Label" parent="."]
+offset_left = 672.0
+offset_top = 280.0
+offset_right = 712.0
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
